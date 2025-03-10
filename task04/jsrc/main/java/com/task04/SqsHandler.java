@@ -23,10 +23,10 @@ import java.util.Map;
 public class SqsHandler implements RequestHandler<Object, Map<String, Object>> {
 
 	public Map<String, Object> handleRequest(Object request, Context context) {
-		System.out.println("Hello from lambda");
+		context.getLogger().log("Received event: " + request.toString() + "\n");
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("statusCode", 200);
-		resultMap.put("body", "Hello from Lambda");
+		resultMap.put("message", "Processed SQS Messages Successfully");
 		return resultMap;
 	}
 }
